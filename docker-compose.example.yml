@@ -1,0 +1,12 @@
+services:
+  cs2:
+    container_name: cs2
+    image: ghcr.io/sazarkin/cs2
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./csdata:/home/cs2/server
+      - ./custom-files:/usr/cs2
+    environment:
+      - CS2_MAP=de_inferno
+

@@ -5,10 +5,9 @@
 ## Table of Contents
 
 - [How to Use This Image](#how-to-use-this-image)
+- [How to Use Docker Compose](#how-to-use-docker-compose)
 - [Image Variants](#image-variants)
 - [Environment Variables](#environment-variables)
-  - [General](#general)
-  - [Other](#other)
 - [Populating with Own Server Files](#populating-with-own-server-files)
 - [Updating the Server](#updating-the-server)
 
@@ -28,6 +27,32 @@ This is a bare minimum example and the server will be:
 - running in LAN mode since a [Game Server Login Token](https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers#Registering_Game_Server_Login_Token) (GSLT) is required to run the server on the internet.
 
 To configure the server with more advanced settings, set [environment variables](#environment-variables).
+
+## How to Use Docker Compose
+
+For easier management, you can use `docker compose` with the provided `docker-compose.example.yml` file.
+
+First, copy the example file:
+
+```sh
+cp docker-compose.example.yml docker-compose.yml && mkdir -p ./csdata ./custom-files
+```
+
+The `csdata` directory will store the game server files, ensuring data persistence so you do not need to redownload them every time the container starts. The `custom-files` directory is where you can place your custom server configurations, maps, or other files that you want to add or overwrite in the server.
+
+Then, you can start the server:
+
+```sh
+docker compose up -d
+```
+
+To stop the server:
+
+```sh
+docker compose down
+```
+
+You can customize the `docker-compose.yml` file to set [environment variables](#environment-variables), change volume mounts, or adjust network settings.
 
 ## Image Variants
 
