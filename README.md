@@ -20,7 +20,7 @@
 $ docker run \
   -v=cs2:/home/cs2/server \
   --net=host \
-  timche/cs2
+  ghcr.io/sazarkin/cs2:latest
 ```
 
 This is a bare minimum example and the server will be:
@@ -33,7 +33,7 @@ To configure the server with more advanced settings, set [environment variables]
 
 ## Image Variants
 
-Each variant refers to a tag, e.g. `timche/cs2:<tag>`.
+Each variant refers to a tag, e.g. `ghcr.io/sazarkin/cs2:<tag>`.
 
 ##### [`latest`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile) / [`<version>`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile)
 
@@ -152,7 +152,7 @@ $ docker run \
   -v=cs2:/home/cs2/server \
   -v=/home/user/custom-files:/usr/cs2 \ # Mount the custom files directory
   --net=host \
-  timche/cs2
+  ghcr.io/sazarkin/cs2:latest
 ```
 <!-- prettier-ignore-end -->
 

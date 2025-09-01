@@ -30,5 +30,12 @@ WORKDIR /home/cs2
 
 COPY server.sh .
 
-ENTRYPOINT ["/home/cs2/server.sh"]
+LABEL org.opencontainers.image.source=https://github.com/sazarkin/docker-cs2 \
+      org.opencontainers.image.title="CS2 Dedicated Server" \
+      org.opencontainers.image.description="Docker image for running a Counter-Strike 2 dedicated server." \
+      org.opencontainers.image.url="https://github.com/sazarkin/docker-cs2" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.vendor="sazarkin" \
+      org.opencontainers.image.version="1.0.0"
 
+ENTRYPOINT ["/home/cs2/server.sh"]
