@@ -7,8 +7,8 @@ shopt -s extglob
 steam_dir="${HOME}/Steam"
 server_dir="${HOME}/server"
 server_installed_lock_file="${server_dir}/installed.lock"
-cs2_dir="${server_dir}/game/csgo"
-cs2_custom_files_dir="${CS2_CUSTOM_FILES_DIR-"/usr/csgo"}"
+cs2_dir="${server_dir}/game/cs2"
+cs2_custom_files_dir="${CS2_CUSTOM_FILES_DIR-"/usr/cs2"}"
 
 
 install() {
@@ -39,8 +39,8 @@ sync_custom_files() {
 
     set -x
 
-    cp -asf $cs2_custom_files_dir/* $cs2_dir  # Copy custom files as soft links
-    find $cs2_dir -xtype l -delete            # Find and delete broken soft links
+    cp -asf "$cs2_custom_files_dir"/* "$cs2_dir"  # Copy custom files as soft links
+    find "$cs2_dir" -xtype l -delete            # Find and delete broken soft links
 
     set +x
 
@@ -61,7 +61,7 @@ start() {
 
   set -x
 
-  exec $server_dir/game/bin/linuxsteamrt64/cs2 \
+  exec "$server_dir"/game/bin/linuxsteamrt64/cs2 \
     -dedicated \
     -console \
     -usercon \
@@ -74,8 +74,8 @@ start() {
     $CS2_PARAMS
 }
 
-if [ ! -z $1 ]; then
-  $1
+if [ ! -z "$1" ]; then
+  "$1"
 else
   install
   sync_custom_files

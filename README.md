@@ -33,11 +33,11 @@ To configure the server with more advanced settings, set [environment variables]
 
 ## Image Variants
 
-Each variant refers to a tag, e.g. `timche/csgo:<tag>`.
+Each variant refers to a tag, e.g. `timche/cs2:<tag>`.
 
 ##### [`latest`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile) / [`<version>`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile)
 
-Vanilla CS:GO server.
+Vanilla CS2 server.
 
 ## Environment Variables
 
@@ -97,7 +97,7 @@ Additional `srcds_run` [parameters](https://developer.valvesoftware.com/wiki/Com
 
 ##### `CS2_CUSTOM_FILES_DIR`
 
-Default: `/usr/csgo`
+Default: `/usr/cs2`
 
 Absolute path to a directory in the container containing custom server files. Changing this is not recommended in order to follow the documentation. See more at "[Populating with Own Server Files](#populating-with-own-server-files)".
 
@@ -120,7 +120,7 @@ Print all executed commands for better debugging.
 
 ## Populating with Own Server Files
 
-The server can be populated with your own custom server files (e.g. configs and maps) through a mounted directory that has the same folder structure as the server `csgo` folder in order to add or overwrite the files at their respective paths. Deleted custom server files, which have been added or have overwritten files before, are also removed from the `csgo` folder. The directory must be mounted at [`CS2_CUSTOM_FILES_DIR`](#cs2_custom_files_dir) (default: `/usr/csgo`) and will be synced with the server `csgo` folder at each start of the container.
+The server can be populated with your own custom server files (e.g. configs and maps) through a mounted directory that has the same folder structure as the server `cs2` folder in order to add or overwrite the files at their respective paths. Deleted custom server files, which have been added or have overwritten files before, are also removed from the `cs2` folder. The directory must be mounted at [`CS2_CUSTOM_FILES_DIR`](#cs2_custom_files_dir) (default: `/usr/cs2`) and will be synced with the server `cs2` folder at each start of the container.
 
 **Note:** See [`VALIDATE_SERVER_FILES`](#validate_server_files) on how to restore original files if they've been overwritten before but are removed now.
 
@@ -144,13 +144,13 @@ custom-files
 
 #### Container
 
-`/home/user/custom-files` mounted to [`CS2_CUSTOM_FILES_DIR`](#cs2_custom_files_dir) (default: `/usr/csgo`) in the container:
+`/home/user/custom-files` mounted to [`CS2_CUSTOM_FILES_DIR`](#cs2_custom_files_dir) (default: `/usr/cs2`) in the container:
 
 <!-- prettier-ignore-start -->
 ```sh
 $ docker run \
   -v=cs2:/home/cs2/server \
-  -v=/home/user/custom-files:/usr/csgo \ # Mount the custom files directory
+  -v=/home/user/custom-files:/usr/cs2 \ # Mount the custom files directory
   --net=host \
   timche/cs2
 ```
@@ -166,8 +166,8 @@ Restart the container with [`docker restart`](https://docs.docker.com/engine/ref
 
 #### Example
 
-Container named `csgo`:
+Container named `cs2`:
 
 ```sh
-$ docker restart csgo
+$ docker restart cs2
 ```

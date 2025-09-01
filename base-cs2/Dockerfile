@@ -12,23 +12,23 @@ RUN apt-get update \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -m csgo
+    && useradd -m cs2
 
-USER csgo
+USER cs2
 
-RUN mkdir /home/csgo/Steam && \
-    mkdir /home/csgo/server
+RUN mkdir /home/cs2/Steam && \
+    mkdir /home/cs2/server
 
-WORKDIR /home/csgo/Steam
+WORKDIR /home/cs2/Steam
 
 RUN wget -qO- https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar zxf - \
-    && /home/csgo/Steam/steamcmd.sh +quit \
-    && mkdir -p /home/csgo/.steam/sdk64 \
-    && ln -s /home/csgo/Steam/linux64/steamclient.so /home/csgo/.steam/sdk64/steamclient.so
+    && /home/cs2/Steam/steamcmd.sh +quit \
+    && mkdir -p /home/cs2/.steam/sdk64 \
+    && ln -s /home/cs2/Steam/linux64/steamclient.so /home/cs2/.steam/sdk64/steamclient.so
 
-WORKDIR /home/csgo
+WORKDIR /home/cs2
 
 COPY server.sh .
 
-ENTRYPOINT ["/home/csgo/server.sh"]
+ENTRYPOINT ["/home/cs2/server.sh"]
 
