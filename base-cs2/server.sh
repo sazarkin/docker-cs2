@@ -59,6 +59,10 @@ start() {
     additionalParams+=" +sv_password $CS2_PW"
   fi
 
+  if [ -n "$CS2_GSLT" ]; then
+    additionalParams+=" +sv_setsteamaccount $CS2_GSLT"
+  fi
+
   set -x
 
   exec "$server_dir"/game/bin/linuxsteamrt64/cs2 \
