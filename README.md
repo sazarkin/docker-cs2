@@ -6,7 +6,6 @@
 
 - [How to Use This Image](#how-to-use-this-image)
 - [How to Use Docker Compose](#how-to-use-docker-compose)
-- [Image Variants](#image-variants)
 - [Environment Variables](#environment-variables)
 - [Populating with Own Server Files](#populating-with-own-server-files)
 - [Updating the Server](#updating-the-server)
@@ -54,13 +53,7 @@ docker compose down
 
 You can customize the `docker-compose.yml` file to set [environment variables](#environment-variables), change volume mounts, or adjust network settings.
 
-## Image Variants
 
-Each variant refers to a tag, e.g. `ghcr.io/sazarkin/cs2:<tag>`.
-
-##### [`latest`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile) / [`<version>`](https://github.com/timche/docker-csgo/blob/master/base-cs2/Dockerfile)
-
-Vanilla CS2 server.
 
 ## Environment Variables
 
