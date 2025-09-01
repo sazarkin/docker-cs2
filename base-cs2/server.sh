@@ -7,7 +7,7 @@ shopt -s extglob
 steam_dir="${HOME}/Steam"
 server_dir="${HOME}/server"
 server_installed_lock_file="${server_dir}/installed.lock"
-cs2_dir="${server_dir}/game/cs2"
+cs2_dir="${server_dir}/game/csgo" # internal files of game still use `csgo` directory
 cs2_custom_files_dir="${CS2_CUSTOM_FILES_DIR-"/usr/cs2"}"
 
 
@@ -42,11 +42,12 @@ install() {
 sync_custom_files() {
   echo "> Checking for custom files at \"$cs2_custom_files_dir\" ..."
 
-  if [ -d "$cs2_custom_files_dir" ]; then
+  if [ -d "$cs2_custom_files_dir" ] && [ -n "$(ls -A "$cs2_custom_files_dir")" ]; then
     echo "> Found custom files. Syncing with \"${cs2_dir}\" ..."
 
     set -x
 
+    mkdir -p "$cs2_dir"
     cp -asf "$cs2_custom_files_dir"/* "$cs2_dir"  # Copy custom files as soft links
     find "$cs2_dir" -xtype l -delete            # Find and delete broken soft links
 

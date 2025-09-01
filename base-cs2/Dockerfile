@@ -12,7 +12,9 @@ RUN apt-get update \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -m cs2
+    && useradd -m cs2 \
+    && mkdir -p /usr/cs2 \
+    && chown cs2:cs2 /usr/cs2
 
 USER cs2
 
