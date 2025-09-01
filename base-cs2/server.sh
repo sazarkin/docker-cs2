@@ -20,11 +20,19 @@ install() {
     validate="validate"
   fi
 
-  $steam_dir/steamcmd.sh \
-    +force_install_dir $server_dir \
-    +login "${STEAM_USERNAME}" "${STEAM_PASSWORD}" \
-    +app_update 730 ${validate} \
-    +quit
+  if [ -n "${STEAM_USERNAME}" ] && [ -n "${STEAM_PASSWORD}" ]; then
+    $steam_dir/steamcmd.sh \
+      +force_install_dir $server_dir \
+      +login "${STEAM_USERNAME}" "${STEAM_PASSWORD}" \
+      +app_update 730 ${validate} \
+      +quit
+  else
+    $steam_dir/steamcmd.sh \
+      +force_install_dir $server_dir \
+      +login anonymous \
+      +app_update 730 ${validate} \
+      +quit
+  fi
 
   echo '> Done'
 

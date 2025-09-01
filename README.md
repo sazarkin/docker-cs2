@@ -1,6 +1,6 @@
 # docker-cs2
 
-> [Counter-Strike 2 (CS2) Dedicated Server](https://developer.valvesoftware.com/wiki/Counter-Strike_2_Dedicated_Servers) with automated/manual updating
+> [Counter-Strike 2 (CS2) Dedicated Server](https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers) with automated/manual updating
 
 ## Table of Contents
 
@@ -11,7 +11,6 @@
   - [Other](#other)
 - [Populating with Own Server Files](#populating-with-own-server-files)
 - [Updating the Server](#updating-the-server)
-  - [Manually](#manually)
 
 ## How to Use This Image
 
@@ -26,7 +25,7 @@ This is a bare minimum example and the server will be:
 
 - installed on a volume named `cs2` to [ensure persistence of server files](https://docs.docker.com/storage/).
 - running on the default port `27015` on the `host` network for [optimal network performance](https://docs.docker.com/network/host/)
-- running in LAN mode since a [Game Server Login Token](https://developer.valvesoftware.com/wiki/Counter-Strike_2_Dedicated_Servers#Game_Server_Login_Token) (GSLT) is required to run the server on the internet.
+- running in LAN mode since a [Game Server Login Token](https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers#Registering_Game_Server_Login_Token) (GSLT) is required to run the server on the internet.
 
 To configure the server with more advanced settings, set [environment variables](#environment-variables).
 
@@ -78,7 +77,7 @@ Sets `+sv_password` in `srcds_run` parameters.
 
 Default: None
 
-[Game Server Login Token](https://developer.valvesoftware.com/wiki/Counter-Strike_2_Dedicated_Servers#Game_Server_Login_Token) (GSLT). This is required to have the server show up on the internet. You can create a game login token for your public server with your Steam account at [https://steamcommunity.com/dev/managegameservers](https://steamcommunity.com/dev/managegameservers) (use App ID `730` for CS2).
+[Game Server Login Token](https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers#Registering%20Game%20Server%20Login%20Token) (GSLT). This is required to have the server show up on the internet. You can create a game login token for your public server with your Steam account at [https://steamcommunity.com/dev/managegameservers](https://steamcommunity.com/dev/managegameservers) (use App ID `730` for CS2).
 
 Sets `+sv_setsteamaccount` in `srcds_run` parameters.
 
@@ -100,7 +99,7 @@ Sets `+game_alias` in `srcds_run` parameters.
 
 ##### `CS2_PARAMS`
 
-Additional `srcds_run` [parameters](https://developer.valvesoftware.com/wiki/Command_Line_Options#Command-line_parameters).
+Additional `srcds_run` [parameters](https://developer.valvesoftware.com/wiki/Counter-Strike_2/Dedicated_Servers#Command-Line_Parameters).
 
 ##### `CS2_CUSTOM_FILES_DIR`
 
@@ -118,12 +117,6 @@ Default: `false`
 Validate and restore missing/fix broken server files on container start. Can be enabled with `true`.
 
 This should especially be used whenever custom server files have been deleted and have overwritten files before, and you want to restore the original files.
-
-##### `DEBUG`
-
-Default: `false`
-
-Print all executed commands for better debugging.
 
 ## Populating with Own Server Files
 
