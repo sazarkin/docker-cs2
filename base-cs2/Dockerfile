@@ -30,6 +30,8 @@ RUN wget -qO- https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.ta
 
 WORKDIR /home/cs2
 
+ENV LD_LIBRARY_PATH="/home/cs2/server/game/bin/linuxsteamrt64:${LD_LIBRARY_PATH}"
+
 COPY server.sh .
 
 LABEL org.opencontainers.image.source=https://github.com/sazarkin/docker-cs2 \
